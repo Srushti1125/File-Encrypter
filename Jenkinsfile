@@ -26,11 +26,10 @@ pipeline {
                     cd "Password Protection"
 
                     # Download JUnit jar if not already present
-                    if [ ! -f junit-platform-console-standalone.jar ]; then
-                        echo "Downloading JUnit..."
-                        curl -L -o junit-platform-console-standalone.jar \
-                        https://repo1.maven.org/maven2/org/junit/platform/junit-platform-console-standalone/1.10.0/junit-platform-console-standalone-1.10.0.jar
-                    fi
+                    echo "Downloading fresh JUnit jar..."
+                    rm -f junit-platform-console-standalone.jar
+                    curl -L -o junit-platform-console-standalone.jar \
+                    https://repo1.maven.org/maven2/org/junit/platform/junit-platform-console-standalone/1.10.0/junit-platform-console-standalone-1.10.0.jar
 
                     # Compile test files (test folder beside src)
                     mkdir -p test-build
